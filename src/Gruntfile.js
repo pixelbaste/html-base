@@ -6,6 +6,8 @@ module.exports = function(grunt) {
         uglify: {
             options: {
                 report: 'min',
+                banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' +
+        '<%= grunt.template.today("yyyy-mm-dd") %> */'
             },
             target: {
             files: [{

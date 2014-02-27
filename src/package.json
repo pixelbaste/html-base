@@ -1,13 +1,17 @@
 {
-  "name": "BASE",
+  "name": "HTML-Base-Workflow",
   "version": "1.0.0",
   "description": "BASE Assets",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "BSD-2-Clause",
+  "repository" :
+  { "type" : "git"
+  , "url" : "https://github.com/pixelbaste/html-base.git"
+  },
+  "author": "Grant McMullin",
+  "license": "MIT",
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-contrib-compass": "~0.6.0",
