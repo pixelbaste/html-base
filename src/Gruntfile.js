@@ -19,6 +19,15 @@ module.exports = function(grunt) {
                     cssDir: '../dist/_/css',
                     environment: 'development'
                 }
+            },
+            dist: {                    // Another target
+                options: {
+                    sassDir: 'sass',
+                    cssDir: '../dist/_/css',
+                    environment: 'production',
+                    outputStyle: 'compressed',
+                    force: true
+                }
             }
         },
         concat: {
@@ -52,8 +61,14 @@ module.exports = function(grunt) {
               }
             },
         watch: {
-            files: ['sass/*.scss','sass/*/*.scss','sass/**/*.scss','sass/**/**/*.scss','js/*/*.js','js/*.js', 'Gruntfile.js'],
-            tasks: 'default'
+            dev: {
+                files: ['sass/*.scss','sass/*/*.scss','sass/**/*.scss','sass/**/**/*.scss','js/*/*.js','js/*.js', 'Gruntfile.js'],
+                tasks: 'default'
+            },
+            builder: {
+                files: ['sass/**', 'js/**', 'img/**', 'fonts/**', 'templates/**'],
+                tasks: 'all'
+            }
         }
     });
 
@@ -65,6 +80,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-imagemin');
 
     // Default task(s).
-    grunt.registerTask('default', ['compass','concat'])
-    grunt.registerTask('all', ['compass','concat','imagemin','uglify','copy'])
+    grunt.registerTask('default', ['compass:dev','concat'])
+    grunt.registerTask('all', ['compass:dist','concat','imagemin','uglify','copy'])
 };
