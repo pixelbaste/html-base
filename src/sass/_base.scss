@@ -41,6 +41,10 @@ $legacy-support-for-ie7: false !default; // Override default set in Compass' Sup
 }
 
 
+@import "vendor/font-awesome/font-awesome";
+@import "vendor/flexslider/flexslider";
+@import "vendor/animate/animate";
+
 @import "modules/all";
 @import "partials/layout";
 @import "partials/grids";
