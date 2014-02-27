@@ -37,10 +37,9 @@ $legacy-support-for-ie7: false !default; // Override default set in Compass' Sup
 
 * {
   @include box-sizing(border-box);
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
   *behavior: url(boxsizing.htc);
 }
+
 
 @import "modules/all";
 @import "partials/layout";

@@ -1,14 +1,3 @@
-a {
-  color: $blue;
-  text-decoration: none;
-  @include transition-duration(0.3s);
-
-
-  &:active, &:hover {
-    color: lighten($blue, 5%);
-  }
-}
-
 /* ==========================================================================
    Links
    ========================================================================== */
@@ -16,6 +5,10 @@ a {
 /**
  * Address `outline` inconsistency between Chrome and other browsers.
  */
+
+a {
+ 
+}
 
 a:focus {
   outline: thin dotted;
@@ -230,7 +223,7 @@ sub {
 }
 
 .screen-reader-text {
-  display:none !important;
+  display:none;
 }
 
 .menu-toggle {

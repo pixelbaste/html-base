@@ -4,12 +4,13 @@ module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         uglify: {
-            options: {
-                banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
-            },
-            build: {
-                src: '../dist/_/js/main.js',
-                dest: '../dist/_/js/main.js'
+            target: {
+            files: [{
+                  expand: true,
+                  cwd: '../dist/_/js/',
+                  src: '**/*.js',
+                  dest: '../dist/_/js/'
+              }]
             }
         },
         compass: {                  // Task
@@ -29,6 +30,19 @@ module.exports = function(grunt) {
                     force: true
                 }
             }
+        },
+        csslint: {
+          lax: {
+            options: {
+              import: 2,
+              "box-sizing": false,
+              "ids": false,
+              "star-property-hack": false,
+              "universal-selector": false,
+              "adjoining-classes": false
+            },
+            src: ['../dist/_/css/styles.css']
+          }
         },
         concat: {
             dist: {
@@ -54,8 +68,7 @@ module.exports = function(grunt) {
                   {expand: true, src: ['fonts/**'], dest: '../dist/_/'},
                   {expand: true, cwd: 'templates/', src: ['**'], dest: '../dist/'},
                   {expand: true, cwd: 'behaviors/', src: ['**'], dest: '../dist/'},
-
-
+                  {expand: true, cwd: 'js/vendor-exclude', src: ['**'], dest: '../dist/_/js/vendor'},
 
                 ]
               }
@@ -78,8 +91,9 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-imagemin');
+    grunt.loadNpmTasks('grunt-contrib-csslint');
 
     // Default task(s).
-    grunt.registerTask('default', ['compass:dev','concat'])
-    grunt.registerTask('all', ['compass:dist','concat','imagemin','uglify','copy'])
+    grunt.registerTask('default', ['compass:dev','concat','csslint'])
+    grunt.registerTask('all', ['compass:dist','concat','imagemin','copy','uglify'])
 };
